@@ -159,30 +159,12 @@ shinyApp(ui = function(request){dashboardPage(
                                input$input31, input$input32, input$input33, input$input34, input$input35, input$input36,
                                input$input37, input$input38, input$input39,input$input40, input$input41, input$input42, 
                                input$input43, input$input44, input$input45, input$input46, input$input47, input$input48,
-                               input$input49, input$input50, input$input51, input$input52, input$input53, input$input54,
-                               input$input55))
+                               input$input49, input$input50, input$input51, inmput$input52))
       
-      observe({
-        # check if all mandatory fields have a value
-        mandatory_filled <-
-          vapply(mandatory_inputs,
-                 function(x) {
-                   !is.null(input[[x]]) && input[[x]] != ""
-                 },
-                 logical(1))
-        mandatory_filled <- all(mandatory_filled)
-        
-        # enable/disable the submit button
-        shinyjs::toggleState(id = "submit", condition = mandatory_filled)
-      })
-      
-      observeEvent(input$submit,{ 
-                   nrt_googlesheet %>%
-                     gs_add_row(ws = 1, input = user_inputs())}
-        )
-      
-                     },
-  enableBookmarking = "url")
+                          
+  enableBookmarking = "url"
+    }
+)
 
 
                      
